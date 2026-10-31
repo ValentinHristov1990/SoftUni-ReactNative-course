@@ -1,7 +1,6 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { colors } from "../theme";
 import MovieCard from "./MovieCard";
-import MovieDetails from "./MovieDetails";
 import { useContext } from "react";
 import { MovieContext } from "../contexts/MovieContext";
 
@@ -9,13 +8,21 @@ export default function MovieList({
     onSelect,
 }) {
 
-    const { movies } = useContext(MovieContext);
+    const { movies, selectedGenre, setSelectedGenre } = useContext(MovieContext);
     return (
         <ScrollView contentContainerStyle={styles.content}>
             <View style={styles.header}>
                 <Text style={styles.title}>Каталог Филми</Text>
                 <Text style={styles.subtitle}>{movies.length} филма в колекцията</Text>
             </View>
+            {selectedGenre && (
+                <View style={styles.genreFilter}>
+                    <Text style={styles.genreFilterLabel}>Филтриран по жанр:</Text>
+                    <Pressable style={styles.genreChip} onPress={() => setSelectedGenre(null)}>
+                        <Text style={styles.genreChipText}>{selectedGenre} X</Text>
+                    </Pressable>
+                </View>
+            )}
 
             {movies.map(movie => <MovieCard key={movie.id} {...movie} onSelect={() => onSelect(movie)} />)}
 
