@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { colors } from "../theme";
 import MovieCard from "./MovieCard";
+import MovieDetails from "./MovieDetails";
 
 export default function MovieList({
     movies
