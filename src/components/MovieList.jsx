@@ -4,7 +4,8 @@ import MovieCard from "./MovieCard";
 import MovieDetails from "./MovieDetails";
 
 export default function MovieList({
-    movies
+    movies,
+    onSelect,
 }) {
     return (
         <ScrollView contentContainerStyle={styles.content}>
@@ -13,7 +14,7 @@ export default function MovieList({
                 <Text style={styles.subtitle}>{movies.length} филма в колекцията</Text>
             </View>
 
-            {movies.map(movie => <MovieCard key={movie.id} {...movie} />)}
+            {movies.map(movie => <MovieCard key={movie.id} {...movie} onSelect={() => onSelect(movie)} />)}
 
         </ScrollView>
     );
