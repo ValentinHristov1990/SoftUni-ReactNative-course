@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, StatusBar } from "react-native";
 import data from "../data.json";
 import { colors } from "./theme";
 import MovieList from "./components/MovieList";
@@ -19,6 +19,7 @@ export default function App() {
 
   return (
     <View style={{ backgroundColor: colors.background, flex: 1 }}>
+      <StatusBar barStyle="light-content" />
       {selectedMovie
         ? <MovieDetails movie={selectedMovie} onBack={backHandler} />
         : <MovieList movies={data.movies} onSelect={selectMovieHandler} />
