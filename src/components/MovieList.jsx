@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { colors } from "../theme";
 import MovieCard from "./MovieCard";
 
@@ -6,7 +6,7 @@ export default function MovieList({
     movies
 }) {
     return (
-        <View style={styles.content}>
+        <ScrollView contentContainerStyle={styles.content}>
             <View style={styles.header}>
                 <Text style={styles.title}>Каталог Филми</Text>
                 <Text style={styles.subtitle}>{movies.length} филма в колекцията</Text>
@@ -14,7 +14,7 @@ export default function MovieList({
 
             {movies.map(movie => <MovieCard key={movie.id} {...movie} />)}
 
-        </View>
+        </ScrollView>
     );
 }
 
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         paddingTop: 64,
         paddingHorizontal: 16,
         paddingBottom: 32,
+        marginBottom: 32,
     },
     header: {
         marginBottom: 16,
