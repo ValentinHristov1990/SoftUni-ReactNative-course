@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { colors } from "../theme";
 import { formatDuration } from "../utils/dateTimeUtils";
 import GenreTags from "./GenreTags";
@@ -6,9 +6,16 @@ import MovieDetailsRow from "./MovieDetailsRow";
 
 export default function MovieDetails({
     movie,
+    onBack,
 }) {
     return (
         <View style={styles.content}>
+            <View style={styles.topBar}>
+                <Pressable style={styles.backButton} onPress={onBack}>
+                    <Text style={styles.backText}>Back</Text>
+                </Pressable>
+            </View>
+
             <Image source={{ uri: movie.posterUrl }} style={styles.poster} />
 
             <Text style={styles.title}>{movie.title}</Text>
